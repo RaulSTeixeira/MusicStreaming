@@ -11,9 +11,23 @@ To populate the database, data was imported from CSV files using Visual Studio w
 
 Subsequently, the database was migrated to a cloud environment (Azure SQL Database), along with the SSIS packages, which were transitioned to Azure Data Factory.
 
+JUST NOTES: For each table there is a unique ID that represents the primary key of that specific entity, and foreigh keys that make connections with other tables, when it applies.
+
+
 ## Database
 
-## Data Generation
+## Database Data
+
+Part of the data used to populate the database was retrieved from public repositorys in CSV format. Taking into account project specifications and to keep a reasonable amount of complexity, the raw data was selected using the following entries and amount of records:
+
+| Entry         | Records       |
+| ------------- |:-------------|
+| Countries      | 245 |
+| Bands      | 143.031      |
+| Albuns | 89.088     |
+| Tracks | 738.591     |
+| Users | 1.001 |
+
 
 ```python
 
