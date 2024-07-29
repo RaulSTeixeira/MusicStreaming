@@ -26,6 +26,9 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 ### Conceptual Model (Entity-Relationship Diagram)
 
 ### Database Schema
+
+![MusicStreaming_DB](https://github.com/user-attachments/assets/4d376eec-df08-47e8-b103-c5ddd77513bf)
+
 [dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
 
