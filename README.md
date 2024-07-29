@@ -3,28 +3,33 @@
 ## Introduction
 This repository countains parts of the project *MusicStreaming* developed during RUMOS Data Engineer Academy course.
 
-The main objective of this project is to design and implement a conceptual, logical, and physical architecture for a music streaming platform.
+The main objective of this project is to design and implement a conceptual, logical, and physical architecture for a music streaming platform, including solutions for data storage (relational database and data warehousing) and data handling (ETL processes).
 
-The project started with the design of a relational database that would meet all specified criteria, starting with the definition of an ER model.
+The project starts with the design of a relational database that would meet all the specified criteria, starting with the definition of an ER model.
 
 This database was then implemented in MS SQL Server. To populate the database, data was imported from CSV files using Visual Studio with Integration Services (SSIS).
 
 Subsequently, the database was migrated to a cloud environment (Azure SQL Database), along with the SSIS packages, which were transitioned to Azure Data Factory.
 
+## Table of Contents
+
+- [Project Requirements](#Project-Requirements)
+- [Relational Database](#Relational-Database)
+- [Data Generation](#Data-Generation)
+
 ## Project Requirements
 
 
 
-## Database
+## Relational Database
 
 ### Conceptual Model (Entity-Relationship Diagram)
 
-
 ### Database Schema
+[dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
 
-
-## Database Data
+## Data Generation
 
 Part of the data used to populate the database was retrieved from public repositorys in CSV format. Taking into account project specifications and to keep a reasonable amount of complexity, the raw data was selected using the following entries and amount of records:
 
