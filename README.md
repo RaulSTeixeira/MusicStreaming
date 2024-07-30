@@ -49,7 +49,7 @@ During this conceptual model development, since there is not a single correct so
 
 ## Relational Database
 ### Database Schema
-The conceptual model was then materialized into a relational database, assing attributes to the entities:
+The conceptual model was then materialized into a relational database, assigning attributes to the entities:
 
 ![MusicStreaming_DB](https://github.com/user-attachments/assets/4d376eec-df08-47e8-b103-c5ddd77513bf)
 
