@@ -3,7 +3,7 @@
 ## Introduction
 This repository countains parts of the project *MusicStreaming* developed during RUMOS Data Engineer Academy course.
 
-The main objective of this project is to design and implement a conceptual, logical, and physical architecture for a music streaming platform, including solutions for data storage (relational database and data warehousing) and data handling (ETL processes).
+The main objective of this project is to design and implement a conceptual, logical, and physical architecture for a music streaming platform, including solutions for data storage (relational database and data warehousing) data handling (ETL processes), and data analysis.
 
 The project starts with the design of a relational database that would meet all the specified criteria, starting with the definition of an ER model.
 
@@ -19,18 +19,41 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 
 ## Project Requirements
 
+Regarding the development of the relational database (structured information), besides handling the most basic information (users, bands, albums, tracks, etc) it was also required that it would provide the following information reports:
 
+- Alphabetical list of bands, by country
+- Alphabetical list of bands, label, genre, album name
+- List of the 5 countries with the most bands
+- List of the 10 bands with the most albums
+- List of the 5 music genres with the most albums
+- List of the 20 longest albuns (total playtime)
+- What are the most listened-to songs and music genre, by country, between a time period (ex. 4:00 PM and 12:00 AM)
+- Information on users listening patterns
+- ...
+
+These specifications were taken into acount during the conceptual phase of development, so that the data model would be able to capture all this information.
+
+## Conceptual Model 
+
+Taking into account the project requirements a conceptual model of the database was delevoped, using an *Entity-Relationship Diagram*. This type of diagram allows to specify the different entities that compose the data model and the relationship between them.
+
+During this conceptual model development, since there is not a single correct solution, some assumptions need to be made:
+
+- An album has only one genre.
+- A track can have multiple bands (as long as they are in different albums).
+- An album has only one band.
+- The time used is from the database.
+- ...
+
+![ER drawio (1)](https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399)
 
 ## Relational Database
-
-### Conceptual Model (Entity-Relationship Diagram)
-
 ### Database Schema
+The conceptual model was then materialized into a relational database, assing attributes to the entities:
 
 ![MusicStreaming_DB](https://github.com/user-attachments/assets/4d376eec-df08-47e8-b103-c5ddd77513bf)
 
-[dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
-
+The database schema can be further explored here: [dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
 ## Data Generation
 
