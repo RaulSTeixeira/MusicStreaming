@@ -45,6 +45,8 @@ During this conceptual model development, since there is not a single correct so
 - The time used is from the database.
 - ...
 
+The ER diagram is as follows:
+
 ![ER drawio (1)](https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399)
 
 ## Relational Database
