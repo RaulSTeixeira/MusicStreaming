@@ -92,6 +92,14 @@ During this conceptual model development, since there is not a single correct so
 The ER diagram is as follows:
 
 <img src="https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399" alt="drawing" width="600">
+<br>
+The relatioship between tracks and albuns is a many-to-many type since an album as multiple tracks, and a track can appear in several albuns.
+
+To achieve this relation a join table (or junction) was used, as it can be seen here:
+
+![many-to-many](https://github.com/user-attachments/assets/0b8b448e-be33-4e45-a96e-682441cef3d1)
+
+This join table transforms the many-to-may relationship in two many-to-one relationships, containing two foreign keys from the album and tracks tables.
 
 ## Data Generation
 
