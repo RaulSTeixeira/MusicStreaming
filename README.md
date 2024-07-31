@@ -41,10 +41,43 @@ Choosing a data type (integer, nvarchar, ...) and constrains for the attributes 
 
 ![MusicStreaming_DB](https://github.com/user-attachments/assets/83fa296f-6e94-48f4-a48e-7f2adfa19c18)
 
-
 The database schema can be further explored here: [dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
-## Conceptual Model 
+### Database Implementation
+The database was implemented in MS SQL server, here is part of the code used to create tables and define constrains:
+
+```sql
+-- Create Album table
+CREATE TABLE [Album] (
+  [AlbumId] integer PRIMARY KEY,
+  [BandId] integer,
+  [AlbumName] nvarchar,
+  [MusicType] nvarchar,
+  [Label] nvarchar,
+  [Genre] nvarchar
+)
+GO
+
+-- Create Bands table
+
+CREATE TABLE [Band] (
+  [BandId] integer PRIMARY KEY,
+  [CountryId] integer,
+  [BandName] nvarchar
+)
+GO
+
+-- Add foreign key to table Album, referencing a Band
+
+ALTER TABLE [Album] ADD FOREIGN KEY ([BandId]) REFERENCES [Band] ([BandId])
+GO
+
+-- Add constrains so that the band names are unique(as an example)
+ALTER TABLE [Band] ADD CONSTRAINT unique_band_name UNIQUE ([BandName]);
+GO
+```
+
+### Conceptual Model 
 
 Taking into account the project requirements a conceptual model of the database was delevoped, using an *Entity-Relationship Diagram*. This type of diagram allows to specify the different entities that compose the data model and the relationship between them.
 
@@ -59,7 +92,6 @@ During this conceptual model development, since there is not a single correct so
 The ER diagram is as follows:
 
 <img src="https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399" alt="drawing" width="600">
-
 
 ## Data Generation
 
