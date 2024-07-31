@@ -31,7 +31,18 @@ Regarding the development of the relational database (structured information), b
 - Information on users listening patterns
 - ...
 
-These specifications were taken into acount during the conceptual phase of development, so that the data model would be able to capture all this information.
+These specifications were taken into account during the conceptual phase of development, so that the data model would be able to capture all this information.
+
+## Relational Database
+### Database Schema
+After developing the conceptual model, it was then materialized into a normalized relational database, assigning attributes to entities, and establishing relationships between entities (Primary and Foreign keys definition).
+
+Choosing a data type (integer, nvarchar, ...) and constrains for the attributes was also necessary.
+
+![MusicStreaming_DB](https://github.com/user-attachments/assets/83fa296f-6e94-48f4-a48e-7f2adfa19c18)
+
+
+The database schema can be further explored here: [dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
 ## Conceptual Model 
 
@@ -47,15 +58,8 @@ During this conceptual model development, since there is not a single correct so
 
 The ER diagram is as follows:
 
-![ER drawio (1)](https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399)
+<img src="https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399" alt="drawing" width="600">
 
-## Relational Database
-### Database Schema
-The conceptual model was then materialized into a relational database, assigning attributes to the entities:
-
-![MusicStreaming_DB](https://github.com/user-attachments/assets/4d376eec-df08-47e8-b103-c5ddd77513bf)
-
-The database schema can be further explored here: [dbdiagram](https://dbdiagram.io/d/66a7bdb38b4bb5230ea778af)
 
 ## Data Generation
 
