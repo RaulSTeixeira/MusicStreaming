@@ -16,6 +16,9 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 - [Project Requirements](#Project-Requirements)
 - [Relational Database](#Relational-Database)
 - [Data Generation](#Data-Generation)
+- [Data Warehouse](#Data-Warehouse)
+- [ETL Processes](#ETL-Processes)
+- [Data Analysis](#Data-Analysis)
 
 ## Project Requirements
 
@@ -89,17 +92,18 @@ During this conceptual model development, since there is not a single correct so
 - The time used is from the database.
 - ...
 
-The ER diagram is as follows:
+The ER diagram is as follows.
 
 <img src="https://github.com/user-attachments/assets/472b9e1c-eee0-4523-b8d7-be38b249f399" alt="drawing" width="600">
-<br>
+
 The relatioship between tracks and albuns is a many-to-many type since an album as multiple tracks, and a track can appear in several albuns.
 
-To achieve this relation a join table (or junction) was used, as it can be seen here:
+To achieve this relation a join table (or junction) was used, as it can be seen here.
 
 ![many-to-many](https://github.com/user-attachments/assets/0b8b448e-be33-4e45-a96e-682441cef3d1)
 
 This join table transforms the many-to-may relationship in two many-to-one relationships, containing two foreign keys from the album and tracks tables.
+The join table also has a primary key, since it needs to be referenced in the TracksListened table, to keep a clear record of users listening sessions. This primary key could also be defined as a composite key, using track and album foreign keys.
 
 ## Data Generation
 
@@ -209,3 +213,12 @@ write_to_csv(listening_sessions_data, output_filename)
 print(f"Dataset generated and saved to {output_filename}.")
 
 ```
+
+## Data Warehouse
+*Documentation under development*
+
+## ETL Processes
+*Documentation under development*
+
+## Data Analysis
+*Documentation under development*
