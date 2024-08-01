@@ -117,6 +117,8 @@ Part of the data used to populate the database was retrieved from public reposit
 | Tracks | 738.591     |
 | Users | 1.001 |
 
+Regarding the listening sessions data, since its not easily found, or its not in a apropriate format for this project, it was decided that it would be generated
+
 
 ```python
 
