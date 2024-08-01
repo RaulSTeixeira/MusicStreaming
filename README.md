@@ -117,7 +117,15 @@ Part of the data used to populate the database was retrieved from public reposit
 | Tracks | 738.591     |
 | Users | 1.001 |
 
-Regarding the listening sessions data, since its not easily found, or its not in a apropriate format for this project, it was decided that it would be generated
+Regarding the listening sessions data, since its not easily found, or its not in a apropriate format for this project, it was decided that it would be generated using pyhton scripts.
+
+The developed script generates listening sessions, for a set of users. It randomly selects a certain amount of tracks per session, user and country (each session is associated only with a user in a certain country, and the amount of tracks listened is also random). It also includes the date and hour that each track started.
+
+This script takes as input the ID's of the users, countries and tracks that currently exist in the database. It is also possible to adjust the maximum number of tracks per session (max_tracks_per_session) and the maximum number of sessions (max_sessions)
+
+For this project, the maximum number of sessions was set at 10K generating a dataset with aproximatly 55k entries.
+
+The script generates the dataset as a CSV file, and is also required that it reads a file (also csv) with each track duration, so it can calculate the date and hour that each track is started for each listening session.
 
 
 ```python
