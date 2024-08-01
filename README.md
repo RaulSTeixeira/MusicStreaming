@@ -109,7 +109,7 @@ The join table also has a primary key, since it needs to be referenced in the Tr
 
 Part of the data used to populate the database was retrieved from public repositorys in CSV format. Taking into account project specifications and to keep a reasonable amount of complexity, the raw data was selected using the following entries and amount of records:
 
-| Entry         | Records       |
+| Entities         | Records       |
 | ------------- |:-------------|
 | Countries      | 245 |
 | Bands      | 143.031      |
