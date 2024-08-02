@@ -71,13 +71,16 @@ CREATE TABLE [Band] (
 GO
 
 -- Add foreign key to table Album, referencing a Band
-
 ALTER TABLE [Album] ADD FOREIGN KEY ([BandId]) REFERENCES [Band] ([BandId])
 GO
 
 -- Add constrains so that the band names are unique(as an example)
 ALTER TABLE [Band] ADD CONSTRAINT unique_band_name UNIQUE ([BandName]);
 GO
+
+-- Add cconstrains so that a certain input is whithin a predetermined list
+ALTER TABLE Album
+ADD CONSTRAINT chk_genre CHECK (genre in ('rock','metal','blues'));
 ```
 
 ### Conceptual Model 
