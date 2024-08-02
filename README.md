@@ -15,7 +15,7 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 
 - [Project Requirements](#Project-Requirements)
 - [Relational Database](#Relational-Database)
-- [Data Generation](#Data-Generation)
+- [Data Sources](#Data-Sources)
 - [Data Warehouse](#Data-Warehouse)
 - [ETL Processes](#ETL-Processes)
 - [Data Analysis](#Data-Analysis)
@@ -62,7 +62,6 @@ CREATE TABLE [Album] (
 GO
 
 -- Create Bands table
-
 CREATE TABLE [Band] (
   [BandId] integer PRIMARY KEY,
   [CountryId] integer,
@@ -81,6 +80,7 @@ GO
 -- Add cconstrains so that a certain input is whithin a predetermined list
 ALTER TABLE Album
 ADD CONSTRAINT chk_genre CHECK (genre in ('rock','metal','blues'));
+GO
 ```
 
 ### Conceptual Model 
@@ -108,17 +108,24 @@ To achieve this relation a join table (or junction) was used, as it can be seen 
 This join table transforms the many-to-may relationship in two many-to-one relationships, containing two foreign keys from the album and tracks tables.
 The join table also has a primary key, since it needs to be referenced in the TracksListened table, to keep a clear record of users listening sessions. This primary key could also be defined as a composite key, using track and album foreign keys.
 
-## Data Generation
+## Data Sources
+### Public Repositories
 
-Part of the data used to populate the database was retrieved from public repositorys in CSV format. Taking into account project specifications and to keep a reasonable amount of complexity, the raw data was selected using the following entries and amount of records:
+Part of the data used to populate the database was retrieved from public repositorys in CSV format. Taking into account project specifications and to keep a reasonable amount of complexity, the raw data was selected using the following entities and amount of records:
 
-| Entities         | Records       |
+| Entity         | Records       |
 | ------------- |:-------------|
 | Countries      | 245 |
 | Bands      | 143.031      |
 | Albuns | 89.088     |
 | Tracks | 738.591     |
-| Users | 1.001 |
+| Users | 1.000 |
+| Track_Album* | 1.034.755 |
+*This includes tracks that repeat in different albuns
+
+This data also required some pre-processing, since it contained characters that were not suported by SQL server default collation. A basic phyton script was developed to search and remove this characters.
+
+### Data Generation
 
 Regarding the listening sessions data, since its not easily found, or its not in a apropriate format for this project, it was decided that it would be generated using pyhton scripts.
 
