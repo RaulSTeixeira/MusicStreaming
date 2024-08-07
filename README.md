@@ -244,7 +244,7 @@ print(f"Dataset generated and saved to {output_filename}.")
 
 ```
 
-Here is a snipet of the output of this script, as its possible to see each sessions has only a single user and country. The TrackOrder field is just for controlling purposes and the Datehour represents the time that each music started (its assumed that each music is listened until the end).
+Here is a snipet of the output of this script, as its possible to see each session has only a single user and country. The TrackOrder field is just for controlling purposes and the Datehour represents the time that each music started (its assumed that each music is listened until the end).
 
 ```python
 SessionID,UserID,CountryID,TrackOrder,TrackAlbumID,DateHour
