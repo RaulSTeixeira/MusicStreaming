@@ -146,33 +146,6 @@ For this project, the maximum number of sessions was set at 10K generating a dat
 
 The script generates the dataset as a CSV file, and is also required that it reads a file (also csv) with each track duration, so it can calculate the date and hour that each track is started for each listening session.
 
-Here is a snipet of the output of this script, as its possible to see each sessions has only a single user and country. The TrackOrder field is just for controlling purposes.
-
-```python
-SessionID,UserID,CountryID,TrackOrder,TrackAlbumID,DateHour
-1,766,202,1,207728,2023-06-06 22:06:58
-1,766,202,2,559523,2023-06-06 22:16:24
-1,766,202,3,587397,2023-06-06 22:18:40
-1,766,202,4,520108,2023-06-06 22:19:55
-
-2,993,52,1,618427,2023-07-08 22:06:58
-2,993,52,2,816632,2023-07-08 22:10:03
-2,993,52,3,136210,2023-07-08 22:13:32
-2,993,52,4,508541,2023-07-08 22:18:13
-2,993,52,5,635239,2023-07-08 22:22:15
-
-3,282,98,1,263506,2023-05-05 22:06:58
-3,282,98,2,628752,2023-05-05 22:08:37
-3,282,98,3,439128,2023-05-05 22:10:15
-3,282,98,4,759590,2023-05-05 22:15:03
-3,282,98,5,97963,2023-05-05 22:20:43
-3,282,98,6,999327,2023-05-05 22:25:09
-3,282,98,7,230923,2023-05-05 22:29:14
-3,282,98,8,712753,2023-05-05 22:33:44
-3,282,98,9,500233,2023-05-05 22:37:07
-3,282,98,10,624549,2023-05-05 22:43:12
-```
-
 The full script is presented bellow.
 
 ```python
@@ -269,6 +242,33 @@ write_to_csv(listening_sessions_data, output_filename)
 
 print(f"Dataset generated and saved to {output_filename}.")
 
+```
+
+Here is a snipet of the output of this script, as its possible to see each sessions has only a single user and country. The TrackOrder field is just for controlling purposes and the Datehour represents the time that each music started (its assumed that each music is listened until the end).
+
+```python
+SessionID,UserID,CountryID,TrackOrder,TrackAlbumID,DateHour
+1,766,202,1,207728,2023-06-06 22:06:58
+1,766,202,2,559523,2023-06-06 22:16:24
+1,766,202,3,587397,2023-06-06 22:18:40
+1,766,202,4,520108,2023-06-06 22:19:55
+
+2,993,52,1,618427,2023-07-08 22:06:58
+2,993,52,2,816632,2023-07-08 22:10:03
+2,993,52,3,136210,2023-07-08 22:13:32
+2,993,52,4,508541,2023-07-08 22:18:13
+2,993,52,5,635239,2023-07-08 22:22:15
+
+3,282,98,1,263506,2023-05-05 22:06:58
+3,282,98,2,628752,2023-05-05 22:08:37
+3,282,98,3,439128,2023-05-05 22:10:15
+3,282,98,4,759590,2023-05-05 22:15:03
+3,282,98,5,97963,2023-05-05 22:20:43
+3,282,98,6,999327,2023-05-05 22:25:09
+3,282,98,7,230923,2023-05-05 22:29:14
+3,282,98,8,712753,2023-05-05 22:33:44
+3,282,98,9,500233,2023-05-05 22:37:07
+3,282,98,10,624549,2023-05-05 22:43:12
 ```
 
 ## Database Views 
