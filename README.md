@@ -16,7 +16,7 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 - [Project Requirements](#Project-Requirements)
 - [Relational Database](#Relational-Database)
 - [Data Sources](#Data-Sources)
-- [Database Views, Triggers and Stored Procedures](#Database-Views,-Triggers-and-Stored-Procedures)
+- [Database Views, Triggers and Stored Procedures](#Database-Views-Triggers-and-Stored-Procedures)
 - [Data Warehouse](#Data-Warehouse)
 - [ETL Processes](#ETL-Processes)
 - [Data Analysis](#Data-Analysis)
