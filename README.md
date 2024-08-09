@@ -259,20 +259,119 @@ SessionID,UserID,CountryID,TrackOrder,TrackAlbumID,DateHour
 2,993,52,4,508541,2023-07-08 22:18:13
 2,993,52,5,635239,2023-07-08 22:22:15
 
-3,282,98,1,263506,2023-05-05 22:06:58
-3,282,98,2,628752,2023-05-05 22:08:37
-3,282,98,3,439128,2023-05-05 22:10:15
-3,282,98,4,759590,2023-05-05 22:15:03
-3,282,98,5,97963,2023-05-05 22:20:43
-3,282,98,6,999327,2023-05-05 22:25:09
-3,282,98,7,230923,2023-05-05 22:29:14
-3,282,98,8,712753,2023-05-05 22:33:44
-3,282,98,9,500233,2023-05-05 22:37:07
-3,282,98,10,624549,2023-05-05 22:43:12
+...
 ```
 
-## Database Views 
-*Documentation under development*
+## Database Views, Triggers and Stored Procedures
+### Views
+
+Some views were defined in order to provide information reports, here are some examples:
+
+```sql
+-- Most Tracks listened
+CREATE VIEW most_tracks_listened AS
+SELECT TrackAlbumID, COUNT(TrackAlbumID) as number_listening
+FROM TracksListened
+Group By TrackAlbumID
+
+SELECT *
+FROM most_tracks_listened
+Order by number_listening desc
+```
+
+### Triggers
+Triggers allow to keep a log of changes in table's records from operations such as delete, insert or update.
+
+```sql
+-- Create a trigger to record changes on Band Table
+
+-- Create Audit/Log Table
+CREATE TABLE dbo.Band_Log(
+    ChangeID INT IDENTITY PRIMARY KEY,
+    BandID INT NOT NULL,
+    BandName VARCHAR(255) NOT NULL,
+    CountryID INT NOT NULL,
+    UpdatedAt DATETIME NOT NULL,
+    operation CHAR(3) NOT NULL,
+    CHECK(operation = 'INS' or operation='DEL')
+);
+
+-- Create Trigger
+CREATE TRIGGER dbo.trg_bands
+ON Spotify.dbo.Band
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+	SET NOCOUNT OFF;
+	INSERT INTO
+    dbo.Band_Log
+        (
+            BandID,
+            BandName,
+            CountryID,
+            UpdatedAt,
+            operation
+        )
+		SELECT
+			BandID,
+			BandName,
+			CountryID,
+			GETDATE(),
+			'INS'
+		FROM
+			inserted AS ins
+		UNION ALL
+			SELECT
+			BandID,
+			BandName,
+			CountryID,
+			GETDATE(),
+			'DEL'
+			FROM
+			deleted AS del;
+END
+
+-- Tests
+DELETE FROM
+	dbo.Band
+WHERE 
+    BandID = 302;
+
+INSERT INTO dbo.Band(
+    BandID, 
+    BandName, 
+    CountryID 
+)
+VALUES (
+    301,
+    'TEST_BAND',
+    2018
+);
+
+UPDATE dbo.Band
+SET BandName = 'AAA'
+WHERE BandID = 1000;
+
+Select * From spotify.dbo.Band_Log
+```
+
+### Stored Procedures
+A couple of stored procedures were also defined, they allow to call select statements taking as input some variables (ex. number of records to show), here is an example:
+
+```sql
+--Create a Stored Procedure
+
+CREATE PROCEDURE top_x_bands_most_albums @number_bands integer
+AS
+SELECT Top (@number_bands) Band.BandID, Band.BandName, Count(Album.AlbumID) as number_of_albums
+FROM Band
+INNER JOIN Country ON Band.CountryID=Country.CountryID
+INNER JOIN Album ON Album.BandID = Band.BandID
+Group by Band.BandID, Band.BandName
+Order By Count(Album.AlbumID) DESC
+
+EXEC top_x_bands_most_albums @number_bands = 20;
+```
 
 ## Data Warehouse
 *Documentation under development*
