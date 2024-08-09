@@ -16,6 +16,7 @@ Subsequently, the database was migrated to a cloud environment (Azure SQL Databa
 - [Project Requirements](#Project-Requirements)
 - [Relational Database](#Relational-Database)
 - [Data Sources](#Data-Sources)
+- [Database Views, Triggers and Stored Procedures](#Database-Views,-Triggers-and-Stored-Procedures)
 - [Data Warehouse](#Data-Warehouse)
 - [ETL Processes](#ETL-Processes)
 - [Data Analysis](#Data-Analysis)
@@ -277,6 +278,28 @@ Group By TrackAlbumID
 SELECT *
 FROM most_tracks_listened
 Order by number_listening desc
+
+-- Alphabetical list of bands, by country
+SELECT Band.CountryID, Country.CountryName, Band.BandID, Band.BandName
+FROM Band
+INNER JOIN Country ON Band.CountryID=Country.CountryID
+Order by CountryName DESC, BandName
+
+-- Alphabetical list of bands, label, genre, album name
+SELECT Band.BandID, Band.BandName, Album.Label, Album.MusicType, Album.AlbumName 
+FROM Band
+INNER JOIN Country ON Band.CountryID=Country.CountryID
+INNER JOIN Album ON Album.BandID = Band.BandID
+Order by BandName
+
+--List of the 10 bands with the most albums
+CREATE VIEW top_10_bands_most_albums AS
+SELECT Top 10 Band.BandID, Band.BandName, Count(Album.AlbumID) as number_of_albums
+FROM Band
+INNER JOIN Country ON Band.CountryID=Country.CountryID
+INNER JOIN Album ON Album.BandID = Band.BandID
+Group by Band.BandID, Band.BandName
+Order By Count(Album.AlbumID) DESC
 ```
 
 ### Triggers
